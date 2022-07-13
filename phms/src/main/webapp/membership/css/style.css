@@ -96,18 +96,6 @@ label + .txt {
   line-height: 21px;
 }
 
-#wrap .title-img {
-  width: 240px;
-  height: 44px;
-  margin: 0 auto;
-
-}
-
-.title-img {
-  background-image: url('https://static.nid.naver.com/images/ui/join/m_naver_logo_20191126.png');
-  background-size: cover;
-}
-
 h2 {
 margin: 19px 0 8px 0;
 font-size: 14px;
