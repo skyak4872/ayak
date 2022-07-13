@@ -1,6 +1,6 @@
 package com.ayak.phms.membership;
 
-public class User {
+public class User { //userServlet에서 클라이언트의 요청값을 받아와 여기에 저장
 	private String userId;
 	private String userPassWd;
 	private String userName;
