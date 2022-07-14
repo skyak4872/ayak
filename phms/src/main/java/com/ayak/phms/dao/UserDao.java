@@ -1,8 +1,12 @@
-package com.ayak.phms.membership;
+package com.ayak.phms.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.ayak.phms.membership.User;
 
 public class UserDao {
 	private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -46,6 +50,45 @@ public class UserDao {
 	  }catch(Exception e) {
 		  e.printStackTrace();
 	  }
-	 }	  
+	 }
+
 	  
+	public int login(String id, String passwd) {
+		String sql = "SELECT userPassWd FROM User WHERE userId = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null; // select 구문을 수행할때 쓰임 값을 가져오는 용도? ResultSet객체에 결과값을 담는다.
+			try {
+				con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id); // 쿼리문의 ? 에 인자값으로 넣은 id를 넣어 찾아낸다. 
+				rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+				if(rs.next()) { //
+					if(rs.getString(1).contentEquals(passwd)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+						//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+						System.out.println("로그인d");
+						return 1;					
+					}else {
+						System.out.println("비밀번호 오류d");
+							return 2;
+					}
+				}
+				System.out.println("아이디 오류d");
+				return -1;
+			}finally {
+				rs.close();
+				pstmt.close();
+				con.close();				
+			}
+		}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		return -2;	//DB오류
+		}
+	
+	  public static void main(String[] args) {
+		UserDao userDao = new UserDao();
+		userDao.login("test1", "good123");
+	}
 }

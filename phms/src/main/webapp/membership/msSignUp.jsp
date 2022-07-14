@@ -129,7 +129,7 @@
               </tr>
             </table>
             <div class="button-group">
-              <button type="submit" class="gbtn normal">가입하기</button>
+              <button type="submit" class="gbtn normal" href="http://localhost:8080/phms/loginOut/msLogin.jsp">가입하기</button>
             </div>
           </form>
         </div>
