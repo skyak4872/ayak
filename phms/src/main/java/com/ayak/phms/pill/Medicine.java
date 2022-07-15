@@ -13,6 +13,27 @@ public class Medicine {
 	private String M_StorageMethod;  // 보관법
 	private String M_DrugImage;  // 이미지
 	
+	
+	public Medicine() {
+		super(); 
+	}
+	
+	public Medicine(String m_Company, String m_DrugName, String m_DrugEffect, String m_UseDrug,
+			String m_BeforeWarn, String m_AfterWarn, String m_Interaction, String m_SideEffect, String m_StorageMethod,
+			String m_DrugImage) {
+		super();
+		M_Company = m_Company;
+		M_DrugName = m_DrugName;
+		M_DrugEffect = m_DrugEffect;
+		M_UseDrug = m_UseDrug;
+		M_BeforeWarn = m_BeforeWarn;
+		M_AfterWarn = m_AfterWarn;
+		M_Interaction = m_Interaction;
+		M_SideEffect = m_SideEffect;
+		M_StorageMethod = m_StorageMethod;
+		M_DrugImage = m_DrugImage;
+	}
+	
 	public long getMid() {
 		return Mid;
 	}

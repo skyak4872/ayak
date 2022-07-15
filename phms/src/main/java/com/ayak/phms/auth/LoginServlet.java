@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ayak.phms.dao.UserDao;
 import com.ayak.phms.membership.User;
+import com.ayak.phms.membership.UserDao;
 
 @WebServlet("/auth/login")
 public class LoginServlet extends HttpServlet {

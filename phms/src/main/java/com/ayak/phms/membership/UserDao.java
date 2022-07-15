@@ -1,12 +1,10 @@
-package com.ayak.phms.dao;
+package com.ayak.phms.membership;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.ayak.phms.membership.User;
 
 public class UserDao {
 	private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
