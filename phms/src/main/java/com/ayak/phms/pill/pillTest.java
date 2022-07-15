@@ -8,7 +8,7 @@ public class pillTest {
 		
 		MedicineDao medi_dao = new MedicineDao();
 		
-		List<Medicine> medi_list = medi_dao.All_list();
+		List<Medicine> medi_list = medi_dao.All_listByDrugName("까스활명수");
 		
 		for(Medicine medi : medi_list) {
 			System.out.println("업체명 : "+medi.getM_Company());

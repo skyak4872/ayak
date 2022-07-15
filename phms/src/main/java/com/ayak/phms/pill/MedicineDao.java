@@ -91,7 +91,7 @@ public class MedicineDao {
 	}
 	
 	public List<Medicine> All_listByDrugName(String DrugName){
-		String sql = "SELECT * FROM Medicine WHERE M_DrugName LIKE '%?%'";
+		String sql = "SELECT * FROM Medicine WHERE M_DrugName LIKE ?";
 		List<Medicine> medi_list = new ArrayList<Medicine>();
 		
 		try {
@@ -101,7 +101,7 @@ public class MedicineDao {
 			try {
 				con =  DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, DrugName);
+				pstmt.setString(1, "%" + DrugName + "%");
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					Medicine medi = new Medicine();
@@ -129,7 +129,7 @@ public class MedicineDao {
 	}
 	
 	public List<Medicine> All_listByCompany(String Company){
-		String sql = "SELECT * FROM Medicine WHERE M_Company LIKE '%?%'";
+		String sql = "SELECT * FROM Medicine WHERE M_Company LIKE ?";
 		List<Medicine> medi_list = new ArrayList<Medicine>();
 		
 		try {
@@ -139,7 +139,7 @@ public class MedicineDao {
 			try {
 				con =  DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, Company);
+				pstmt.setString(1, "%" + Company + "%");
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					Medicine medi = new Medicine();
@@ -167,7 +167,7 @@ public class MedicineDao {
 	}
 	
 	public List<Medicine> All_listByDrugEffect(String Effect){
-		String sql = "SELECT * FROM Medicine WHERE M_DrugEffect LIKE '%?%'";
+		String sql = "SELECT * FROM Medicine WHERE M_DrugEffect LIKE '%"+Effect+"%'";
 		List<Medicine> medi_list = new ArrayList<Medicine>();
 		
 		try {
@@ -177,7 +177,7 @@ public class MedicineDao {
 			try {
 				con =  DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, Effect);
+				pstmt.setString(1, "%" + Effect + "%");
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					Medicine medi = new Medicine();

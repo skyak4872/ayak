@@ -76,57 +76,77 @@ public class MedicineData {
 		/* String[] M_data_index = {}; */
         for(int i = 0; i < M_data_Array.length; i++) {
         	M_data_Array[i] = M_data_Array[i].replaceAll(">", ":");
-        	M_data_Array[i] = M_data_Array[i].replaceAll("/", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("&lt;p", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("&lt;/p", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("&lt;", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("&lt;/", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("&gt;", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("sup", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("sub", "");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("//", "/");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("/정", "정");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("/포", "포");
+        	M_data_Array[i] = M_data_Array[i].replaceAll("/병", "병");
         		if(M_data_Array[i].contains("entpName") == true) {
             		M_data_Array[i] = M_data_Array[i].replaceAll("entpName:", "");
+            		M_data_Array[i] = M_data_Array[i].replaceAll("entpName/:", "");
             		company[arr_num[count]-location_num[count]] = M_data_Array[i];
 //            		System.out.println("업체명 : " + company[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("itemName") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("itemName:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("itemName/:", "");
+        			
         			drugName[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("제품명 : "+drugName[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("efcyQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("efcyQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("efcyQesitm/:", "");
         			drugEffect[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("효능 : " + drugEffect[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("useMethodQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("useMethodQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("useMethodQesitm/:", "");
         			useDrug[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("사용법 : " + useDrug[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("atpnWarnQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("atpnWarnQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("atpnWarnQesitm/:", "");
         			beforeWarn[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("주의사항(복용전) : " + beforeWarn[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("atpnQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("atpnQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("atpnQesitm/:", "");
         			afterWarn[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("주의사항(복용후) : " + afterWarn[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("intrcQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("intrcQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("intrcQesitm/:", "");
         			interaction[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("상호작용 : " + interaction[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("seQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("seQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("seQesitm/:", "");
         			sideEffect[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("부작용 : " + sideEffect[arr_num[count]-location_num[count]]);
             		location_num[count]--;
             		count++;
         		}else if(M_data_Array[i].contains("depositMethodQesitm") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("depositMethodQesitm:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("depositMethodQesitm/:", "");
         			storage_Method[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("보관법 : " + storage_Method[arr_num[count]-location_num[count]]);
             		location_num[count]--;
@@ -136,6 +156,7 @@ public class MedicineData {
         			M_data_Array[i] = M_data_Array[i].replaceAll("body:", "");
         			M_data_Array[i] = M_data_Array[i].replaceAll("response:", "");
         			M_data_Array[i] = M_data_Array[i].replaceAll("itemImage:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("itemImage/:", "");
         			M_data_Array[i] = M_data_Array[i].replaceAll("item:", "");
         			drugImage[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("제품 이미지 : " + drugImage[arr_num[count]-location_num[count]]);
@@ -143,6 +164,7 @@ public class MedicineData {
             		count = 0;
         		}else if(M_data_Array[i].contains("itemImage") == true) {
         			M_data_Array[i] = M_data_Array[i].replaceAll("itemImage:", "");
+        			M_data_Array[i] = M_data_Array[i].replaceAll("itemImage/:", "");
         			M_data_Array[i] = M_data_Array[i].replaceAll("item:", "");
         			drugImage[arr_num[count]-location_num[count]] = M_data_Array[i];
 //        			System.out.println("제품 이미지 : " + drugImage[arr_num[count]-location_num[count]]);
