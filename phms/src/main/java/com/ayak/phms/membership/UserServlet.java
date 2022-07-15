@@ -2,6 +2,8 @@ package com.ayak.phms.membership;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,6 +36,36 @@ public class UserServlet extends HttpServlet {
 		String userEmail = request.getParameter("userEmail");
 		String userphone = request.getParameter("userphone");
 		
+		
+		List<String> errorMsgs = new ArrayList<>();
+		if(userId == null || userId.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("ID는 필수입력 정보입니다.<br>");
+		}if(userPassWd == null || userPassWd.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("비밀번호는 필수입력 정보입니다.<br>");
+		}if(userName == null || userName.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("이름은 필수입력 정보입니다.<br>");
+		}if(year == null || year.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("필수입력 정보입니다.<br>");
+		}if(month == null || month.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("필수입력 정보입니다.<br>");
+		}if(day == null || day.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("필수입력 정보입니다.<br>");
+		}if(userGender == null || userGender.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("필수입력 정보입니다.<br>");
+		}if(userEmail == null || userEmail.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+		}if(userphone == null || userphone.length() == 0) {
+			request.getRequestDispatcher("/membership/msSignUpError.jsp").forward(request, response);
+			errorMsgs.add("필수입력 정보입니다.<br>");
+		}										
+		
 //		out.print("<html><head><title>form parameter check</title></head><body>");
 //		out.print("ID : "+ userId + "<br>"); //위에서 받은 데이터를 화면에 출력
 //		out.print("passWd : "+ userPassWd + "<br>");
@@ -60,8 +92,10 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		
 		request.setAttribute("user", user);
-		dispatcher = request.getRequestDispatcher("/index.jsp");
+		dispatcher = request.getRequestDispatcher("msSuccess.jsp");
 		dispatcher.forward(request, response);
+		
+		
 	}
 
 }

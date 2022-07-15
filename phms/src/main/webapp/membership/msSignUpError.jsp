@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.ayak.phms.membership.UserServlet"%>
+<%@ page import= "java.util.*" %>
+
+<%
+	String userId = request.getParameter("userId");
+	String userPassWd = request.getParameter("userPassWd");
+	String userName = request.getParameter("userName");
+	String year = request.getParameter("year");
+	String month = request.getParameter("month");
+	String day = request.getParameter("day");
+	String userGender = request.getParameter("userGender");
+	String userEmail = request.getParameter("userEmail");
+	String userphone = request.getParameter("userphone");
+
+%>
   <!DOCTYPE html>
   <html lang="ko">
     <head>
@@ -19,10 +33,18 @@
           </div>
           <form action="adduser" method="post">
             <table class="table_a">
+            <%
+        	List<String> errorMsgs = new ArrayList<>();
+            %>
               <tr>
                 <td>
                   <ul class="id">
                    <li><h2>아이디</h2></li>
+                   <%if(userId == null || userId.length() == 0) {
+                  		String unlluserId = "<p class=error>ID는 필수입력 정보입니다.</p>";%>
+                  		<%=unlluserId %>
+                  		<%
+                  	} %>
                    <li><input type="text" placeholder="@Ayak.com" name="userId"></li>
                   </ul>
                 </td>
@@ -31,6 +53,11 @@
                 <td>
                   <ul>
                     <li><h2>비밀번호</h2> </li>
+                     <%if(userPassWd == null || userPassWd.length() == 0) {
+                  		String unlluserPassWd = "<p class=error>비밀번호는 필수입력 정보입니다.</p>";%>
+                  		<%=userPassWd %>
+                  		<%
+                  	} %>
                     <input type="password" name="userPassWd">
                   </ul>
                 </td>
@@ -39,6 +66,11 @@
                 <td>
                   <ul>
                     <li><h2 class="name">이름</h2></li>
+                     <%if(userName == null || userName.length() == 0) {
+                  		String unlluserName = "<p class=error>이름은 필수입력 정보입니다.</p>";%>
+                  		<%=unlluserName %>
+                  		<%
+                  	} %>
                     <input type="text" name="userName">
                   </ul>
                 </td>
@@ -47,6 +79,11 @@
                 <td>
                   <ul>
                     <li><h2>생년월일</h2></li>
+                    <%if(year == null || year.length() == 0 || month == null || month.length() == 0 || day == null || day.length() == 0) {
+                  		String ssn = "<p class=error>필수입력 정보입니다.</p>";%>
+                  		<%=ssn %>
+                  		<%
+                  	} %>
                     <input type="text" placeholder="년(4자)" maxlength="4" class="small" name="year">
                     <select class="select-1" name="month" required>
                         <option disabled selected>월</option>
@@ -104,6 +141,11 @@
                 <td>
                   <ul>
                     <li> <h2>성별</h2> </li>
+                    <%if(userGender == null || userGender.length() == 0) {
+                  		String unlluserGender = "<p class=error>성별은 필수입력 정보입니다.</p>";%>
+                  		<%=unlluserGender %>
+                  		<%
+                  	} %>
                     <select class="gender" name="userGender" required>
                       <option disabled selected>성별</option>
                       <option value="M">남자</option>
@@ -116,6 +158,11 @@
                 <td>
                   <ul>
                     <li><h2>본인 이메일</h2></li>
+                    <%if(userEmail == null || userEmail.length() == 0) {
+                  		String unlluserPhone = "<p class=error>이메일은 필수입력 정보입니다.</p>";%>
+                  		<%=unlluserPhone %>
+                  		<%
+                  	} %>
                     <input type="email" placeholder="이메일 형식을 입력해주세요." name="userEmail">
                   </ul>
                 </td>
@@ -124,6 +171,11 @@
                 <td>
                   <ul>
                     <li><h2>휴대전화</h2></li>
+                    <%if(userphone == null || userphone.length() == 0) {
+                  		String unlluserPhone = "<p class=error>휴대전화는 필수입력 정보입니다.</p>";%>
+                  		<%=unlluserPhone %>
+                  		<%
+                  	} %>
                     <input type="tel" placeholder="ex) 010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="13" name="userphone">
                   </ul>
                 </td>

@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		
 		request.setAttribute("user", user);
-		dispatcher = request.getRequestDispatcher("/index.jsp");
+		dispatcher = request.getRequestDispatcher("auSuccess.jsp");
 		dispatcher.forward(request, response);
 		
 	}

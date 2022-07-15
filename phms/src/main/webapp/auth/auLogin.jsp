@@ -23,7 +23,7 @@
                <input type="password" name="userPassWd" placeholder="8~16자 영문 대 소문자,숫자 를 사용하세요."/><br>
            </div>
            <div class="login_etc">
-               <a href="#">회원가입</a>
+               <a href="/phms/membership/msSignUp.jsp">회원가입</a>
                <div class="checkbox">
                  <a href="msFinduserId.jsp" style="margin-left: 40px;" >아이디 찾기</a>
                </div>
