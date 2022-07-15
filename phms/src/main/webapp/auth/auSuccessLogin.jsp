@@ -13,9 +13,9 @@
   <div class="wrap">
        <div class="login">
        <% String id = request.getParameter("userId"); %>
-           <h2> <%= id %>님 반갑습니다!</h2>
+           <h2><%= id %>님 반갑습니다!</h2>
            <div class="img"><img src="./img/success.jpg" alt=""></div>
-           <p><a href="/phms/index.jsp">홈페이지로 이동</a></p>
+           <p><a href="/phms/indexLogin.jsp">홈페이지로 이동</a></p>
      </div>
   </div>
 </body>

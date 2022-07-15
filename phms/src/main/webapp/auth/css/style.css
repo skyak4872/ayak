@@ -99,3 +99,8 @@ h2 {
   font-size: 1.2em;
   letter-spacing: 2px;
 }
+
+.main a{
+	display: block;
+	margin-top: 20px;
+}

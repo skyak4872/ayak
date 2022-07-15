@@ -1,5 +1,6 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <% String userId = request.getParameter("userId"); %>
     <!DOCTYPE html>
     <html lang="ko" dir="ltr">
       <head>
@@ -10,8 +11,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/initial.min.css">
         <link rel="stylesheet" href="./css/style.min.css">
-        <link rel="stylesheet" href="../css/initial.min.css">
-        <link rel="stylesheet" href="../css/style.min.css">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
         <script type="text/javascript" src="./js/jquery.min.js"></script>
         <script type="text/javascript" src="./js/common.js"></script>
@@ -32,13 +31,14 @@
               <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="/phms/auth/auLogin.jsp">로그인</a>
+                  <% String id = (String)session.getAttribute("userId"); %>
+                  <%= id %>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/phms/membership/msSignUp.jsp">회원가입</a>
+                    <a class="nav-link" href="./auth/logout">로그아웃</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/phms/auth/auLogin.jsp">마이페이지</a>
+                    <a class="nav-link" href="./membership/mypage">마이페이지</a>
                   </li>
                 </ul>
               </div>

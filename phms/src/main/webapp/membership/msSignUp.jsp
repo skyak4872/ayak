@@ -14,8 +14,8 @@
       </head>
       <body>
         <div id="wrap">
-          <div class="title">
-             <h2>Ayak</h2>
+          <div class="title"> 
+             <h2><a href="../index.jsp">Ayak</a></h2>
           </div>
           <form action="adduser" method="post">
             <table class="table_a">
@@ -23,7 +23,7 @@
                 <td>
                   <ul class="id">
                    <li><h2>아이디</h2></li>
-                   <li><input type="text" placeholder="@Ayak.com" name="userId"></li>
+                   <li><input type="text" placeholder="5~20자의 영문 소문자,숫자와 사용가능합니다.      @Ayak.com" name="userId" minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]+$"></li>
                   </ul>
                 </td>
               </tr>
@@ -31,7 +31,7 @@
                 <td>
                   <ul>
                     <li><h2>비밀번호</h2> </li>
-                    <input type="password" name="userPassWd">
+                    <input type="password" placeholder="8~16자의 영문 대 소문자,숫자를 사용하세요."  name="userPassWd" minlength="8" maxlength="16" pattern="^[a-zA-Z0-9]+$" >
                   </ul>
                 </td>
               </tr>
@@ -39,7 +39,7 @@
                 <td>
                   <ul>
                     <li><h2 class="name">이름</h2></li>
-                    <input type="text" name="userName">
+                    <input type="text" name="userName" maxlength="6">
                   </ul>
                 </td>
               </tr>
@@ -116,7 +116,7 @@
                 <td>
                   <ul>
                     <li><h2>본인 이메일</h2></li>
-                    <input type="email" placeholder="이메일 형식을 입력해주세요." name="userEmail">
+                    <input type="email" placeholder="이메일 형식을 입력해주세요." name="userEmail" maxlength="20">
                   </ul>
                 </td>
               </tr>
