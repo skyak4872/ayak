@@ -21,9 +21,9 @@ public class MypageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession(false); //있을때만 연결하라는 뜻
+		HttpSession session = request.getSession(false); //있을때만 연결하라는 뜻 false면 httpSession이 없으면 null값이 출력
 		String userId = (String)session.getAttribute("userId"); //받아오기 String 으로 세션 받아 오기
-		if(userId == null ) {  //로그인을 안하고 왔을때 로그인을 제대로 하고왔는지 체크
+		if(userId == null ) {  //로그인을 안하고 왔을때 로그인을 제대로 하고왔는지 체크 (세션이 없으면 아래동작)
 			request.getRequestDispatcher("../index.jsp").forward(request, response); //로그인 안했을때 로그인페이지로 보내기
 			return;
 		}
