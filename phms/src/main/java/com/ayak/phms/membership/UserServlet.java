@@ -21,7 +21,7 @@ public class UserServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8"); //출력값을 한글로 받겠다.
 		request.setCharacterEncoding("UTF-8"); //POST요청 방식의 한글 처리
 		
-		String userId = request.getParameter("userId"); //클라이언트가 요청한(from에 입력한)데이터를 가져와서 userId라는 변수에 넣는다.
+		String userId = request.getParameter("userId"); //클라이언트가 요청한(from에 입력한)데이터를 가져와서 userId라는 변수에 넣는다. 
 		String userPassWd = request.getParameter("userPassWd");
 		String userName = request.getParameter("userName");
 		String year = request.getParameter("year");	
