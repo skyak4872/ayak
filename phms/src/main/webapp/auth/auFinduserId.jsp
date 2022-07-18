@@ -16,11 +16,11 @@
            <h2>아이디 찾기</h2>
            <div class="login_id">
                <h4>이메일</h4>
-               <input type="text" name="userEmail" placeholder="이메일"/><br>
+               <input type="email" placeholder="이메일 형식을 입력해주세요." name="userEmail" maxlength="20"/><br>
            </div>
            <div class="login_pw">
                <h4>휴대전화</h4>
-               <input type="text" name="userphone" placeholder="010-0000-0000"/><br>
+               <input  type="tel" placeholder="ex) 010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="13" name="userphone"/><br>
            </div>
            <div class="login_etc"style="justify-content: space-between;">
                <div class="checkbox">
