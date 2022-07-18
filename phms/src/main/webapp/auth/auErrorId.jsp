@@ -33,6 +33,7 @@
            </div>
            <div class="submit">
              <input type="submit" value="다음" style="cursor: pointer;">
+             <p class="main"><a href="../index.jsp">메인페이지</a></p>
            </div>
        </div>
    </div>

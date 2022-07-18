@@ -24,16 +24,17 @@
                <input type="password" name="userPassWd" placeholder="8~16자 영문 대 소문자,숫자 를 사용하세요."/><br>
            </div>
            <div class="login_etc">
-               <a href="#">회원가입</a>
+               <a href="/phms/membership/msSignUp.jsp">회원가입</a>
                <div class="checkbox">
-                 <a href="msFinduserId.jsp" style="margin-left: 40px;" >아이디 찾기</a>
+                 <a href="auFinduserId.jsp" style="margin-left: 40px;" >아이디 찾기</a>
                </div>
                <div class="forgot_pw">
-                 <a href="msFinduserPw.jsp" style="margin-left: 40px;">비밀번호 찾기</a>
+                 <a href="auFinduserPw.jsp" style="margin-left: 40px;">비밀번호 찾기</a>
            </div>
            </div>
            <div class="submit">
              <input type="submit" value="로그인" style="cursor: pointer;">
+             <p class="main"><a href="../index.jsp">메인페이지</a></p>
            </div>
        </div>
    </div>

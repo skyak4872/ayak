@@ -28,7 +28,7 @@
         <div id="wrap">
           <!-- alert -->
           <div class="alert alert-primary alert-dismissible fade show" role="alert" style="color:">
-            <strong>Ayak</strong><span>&nbsp;&nbsp;‘#알고먹자’</span>
+            <strong>Ayak</strong><span>&nbsp;&nbsp;‘#알고먹자 #약에대한 모든것 #약검색’</span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
