@@ -6,8 +6,8 @@ CREATE TABLE User (
 	userName		VARCHAR(6)			NOT NULL,
 	dateOfBirth		VARCHAR(8)			NOT NULL,
 	userGender		CHAR(1)				NOT NULL,
-	userEmail		VARCHAR(30)			NOT NULL,
-	userphone		VARCHAR(13)			NOT NULL
+	userEmail		VARCHAR(30)			UNIQUE NOT NULL,
+	userphone		VARCHAR(13)			UNIQUE NOT NULL
 )
 
 SELECT * FROM User;

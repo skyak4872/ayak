@@ -154,6 +154,7 @@ font-weight: 700px;
 }
 .gbtn {
 	width: 460px;
+	cursor: pointer;
 }
 
 button {

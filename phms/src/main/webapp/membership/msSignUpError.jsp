@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.ayak.phms.membership.UserServlet"%>
+<%@ page import="com.ayak.phms.membership.UserDao"%>
 <%@ page import= "java.util.*" %>
 
 <%
@@ -13,7 +14,11 @@
 	String userGender = request.getParameter("userGender");
 	String userEmail = request.getParameter("userEmail");
 	String userphone = request.getParameter("userphone");
-
+	
+	UserDao userDao = new UserDao();
+	int resultId = userDao.checkUserId(userId);
+	int resultEmail = userDao.checkUserEmail(userEmail);
+	int resultPhone = userDao.checkUserPhone(userphone);
 %>
   <!DOCTYPE html>
   <html lang="ko">
@@ -29,13 +34,10 @@
       <body>
         <div id="wrap">
           <div class="title">
-             <h2>Ayak</h2>
+             <h2><a href="../index.jsp">Ayak</a></h2>
           </div>
           <form action="adduser" method="post">
             <table class="table_a">
-            <%
-        	List<String> errorMsgs = new ArrayList<>();
-            %>
               <tr>
                 <td>
                   <ul class="id">
@@ -45,6 +47,10 @@
                   		<%=unlluserId %>
                   		<%
                   	} %>
+                  	<% if(resultId == 1){
+                	   String checkId = "<p class=error>해당 아이디는 중복된 아이디입니다.</p>"; %>
+                	   <%= checkId %>
+                   <% } %>
                    <li><input type="text" placeholder="@Ayak.com" name="userId"></li>
                   </ul>
                 </td>
@@ -163,6 +169,10 @@
                   		<%=unlluserPhone %>
                   		<%
                   	} %>
+                  		<% if(resultEmail == 1){
+                	   String checkEmail = "<p class=error>해당 이메일은 중복된 이메일입니다.</p>"; %>
+                	   <%= checkEmail %>
+                   <% } %>
                     <input type="email" placeholder="이메일 형식을 입력해주세요." name="userEmail">
                   </ul>
                 </td>
@@ -176,13 +186,17 @@
                   		<%=unlluserPhone %>
                   		<%
                   	} %>
+                  	<% if(resultPhone == 1){
+                	   String checkPhone = "<p class=error>해당 번호는 중복된 번호입니다.</p>"; %>
+                	   <%= checkPhone %>
+                   <% } %>
                     <input type="tel" placeholder="ex) 010-0000-0000" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="13" name="userphone">
                   </ul>
                 </td>
               </tr>
             </table>
             <div class="button-group">
-              <button type="submit" class="gbtn normal" href="http://localhost:8080/phms/loginOut/msLogin.jsp">가입하기</button>
+              <button type="submit" class="gbtn normal" href="http://localhost:8080/phms/loginOut/msLogin.jsp" cursor: pointer;>가입하기</button>
             </div>
           </form>
         </div>

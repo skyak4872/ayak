@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.ayak.phms.membership.UserServlet"%>
+<%@ page import="com.ayak.phms.membership.UserDao"%>
   <!DOCTYPE html>
   <html lang="ko">
     <head>
@@ -130,7 +131,7 @@
               </tr>
             </table>
             <div class="button-group">
-              <button type="submit" class="gbtn normal" href="http://localhost:8080/phms/loginOut/msLogin.jsp">가입하기</button>
+              <button type="submit" class="gbtn normal" cursor: pointer;>가입하기</button>
             </div>
           </form>
         </div>

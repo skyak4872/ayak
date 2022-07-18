@@ -1,5 +1,13 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> -->
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <% String userId = request.getParameter("userId");
+    HttpSession log = request.getSession(false);
+	String Id = (String)log.getAttribute("userId");
+	if(Id != null ) {
+		request.getRequestDispatcher("indexLogin.jsp").forward(request, response);
+		return;
+	}
+    %>
     <!DOCTYPE html>
     <html lang="ko" dir="ltr">
       <head>

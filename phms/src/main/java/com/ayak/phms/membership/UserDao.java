@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import com.ayak.phms.membership.User;
 
 public class UserDao {
@@ -20,8 +22,9 @@ public class UserDao {
 			}catch(ClassNotFoundException e) {
 				e.printStackTrace();
 	  }
-	  }
+	  }	  
 	  
+//	  =============================================== 회원가입 ====================================================
 	  public void addUser(User user) {
 		  String sql = "INSERT INTO User (userId, userPassWd, userName, dateOfBirth, userGender, userEmail, userphone)" //SQL문을 sql이라는 변수에 넣는다.
 		  		+ "VALUES (?,?,?,?,?,?,?)";
@@ -52,7 +55,116 @@ public class UserDao {
 	  }
 	 }
 
+//	  ===============================================phone 중복확인 ====================================================	  
+		
+	  public int checkUserPhone (String phone) {
+			String sql = "SELECT userphone FROM User WHERE userphone = ?"; 
+			System.out.println(phone+"1");
+			try {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null; 
+				try {
+					con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, phone); 
+					rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+					if(rs.next()) { //
+						if(rs.getString(1).contentEquals(phone)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+							//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+							System.out.println(rs.getString(1)+"2");
+							System.out.println("아이디 중복");
+							return 1;					
+						}
+					}
+					System.out.println("아이디 중복 없음");
+					return 2;
+				}finally {
+					rs.close();
+					pstmt.close();
+					con.close();				
+				}
+			}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			return 3;	//DB오류
+			}
 	  
+//	  ===============================================ID 중복확인 ====================================================
+		public int checkUserId (String id) {
+			String sql = "SELECT userId FROM User WHERE userId = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
+			System.out.println(id+"1");
+			try {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null; // select 구문을 수행할때 쓰임 값을 가져오는 용도? ResultSet객체에 결과값을 담는다.
+				try {
+					con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id); // 쿼리문의 ? 에 인자값으로 넣은 id를 넣어 찾아낸다. 
+					rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+					if(rs.next()) { //
+						if(rs.getString(1).contentEquals(id)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+							//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+							System.out.println(rs.getString(1)+"2");
+							System.out.println("아이디 중복");
+							return 1;					
+						}
+					}
+					System.out.println("아이디 중복 없음");
+					return 2;
+				}finally {
+					rs.close();
+					pstmt.close();
+					con.close();				
+				}
+			}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			return 3;	//DB오류
+			}
+		
+		
+//		  ===============================================Email 중복확인 ====================================================
+		public int checkUserEmail (String email) {
+			String sql = "SELECT userEmail FROM User WHERE userEmail = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
+			System.out.println(email +"1");
+			try {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null; // select 구문을 수행할때 쓰임 값을 가져오는 용도? ResultSet객체에 결과값을 담는다.
+				try {
+					con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, email); // 쿼리문의 ? 에 인자값으로 넣은 id를 넣어 찾아낸다. 
+					rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+					if(rs.next()) { //
+						if(rs.getString(1).contentEquals(email)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+							//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+							System.out.println(rs.getString(1)+"2");
+							System.out.println("이메일 중복");
+							return 1;					
+						}
+					}
+					System.out.println("이메일 중복 없음");
+					return 2;
+				}finally {
+					rs.close();
+					pstmt.close();
+					con.close();				
+				}
+			}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			return 3;	//DB오류
+			}
+		
+//		public static void main(String[] args) {
+//			UserDao userDao = new UserDao();
+//			userDao.checkUserEmail("donoun6@naver.com");
+//		}
+		
+//	  =============================================== 로그인 ====================================================
 	public int login(String id, String passwd) {
 		String sql = "SELECT userPassWd FROM User WHERE userId = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
 		try {
@@ -67,14 +179,14 @@ public class UserDao {
 				if(rs.next()) { //
 					if(rs.getString(1).contentEquals(passwd)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
 						//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
-						System.out.println("로그인d");
+						System.out.println("로그인");
 						return 1;					
 					}else {
-						System.out.println("비밀번호 오류d");
+						System.out.println("비밀번호 오류");
 							return 2;
 					}
 				}
-				System.out.println("아이디 오류d");
+				System.out.println("아이디 오류");
 				return -1;
 			}finally {
 				rs.close();
@@ -87,9 +199,99 @@ public class UserDao {
 		return -2;	//DB오류
 		}
 	
-	  public static void main(String[] args) {
-		UserDao userDao = new UserDao();
-		userDao.login("test1", "good123");
+	
+//	  =============================================== 아이디찾기 ====================================================
+	private String userId;
+	
+	public String getFindUserId() {
+		return userId;
 	}
+	
+	public int findUserId(String email, String phone) {
+		String sql = "SELECT userphone , userId FROM User WHERE userEmail = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
+		System.out.println(email);
+		System.out.println(phone);
+		try {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null; // select 구문을 수행할때 쓰임 값을 가져오는 용도? ResultSet객체에 결과값을 담는다.
+			try {
+				con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, email); // 쿼리문의 ? 에 인자값으로 넣은 id를 넣어 찾아낸다. 
+				rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+				if(rs.next()) { //
+					if(rs.getString(1).contentEquals(phone)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+						//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+						System.out.println(rs.getString(2));
+						userId = rs.getString(2);
+						return 1;					
+					}else {
+						System.out.println("번호 오류");
+							return 2;
+					}
+				}
+				System.out.println("아이디 오류");
+				return -1;
+			}finally {
+				rs.close();
+				pstmt.close();
+				con.close();				
+			}
+		}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		return -2;	//DB오류
+		}
+	
+	public static void main(String[] args) {
+		UserDao userDao = new UserDao();
+		userDao.findUserId("donoun6@naver.com", "010-8396-5353");
+	}
+	
+//	  =============================================== 비밀번호 찾기 ====================================================
+		private String userPw;
+		
+		public String getFindUserPw() {
+			return userPw;
+		}
+	  
+		public int findUserPw(String id, String phone) {
+			String sql = "SELECT userphone , userPassWd FROM User WHERE userId = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
+			System.out.println(id);
+			System.out.println(phone);
+			try {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null; // select 구문을 수행할때 쓰임 값을 가져오는 용도? ResultSet객체에 결과값을 담는다.
+				try {
+					con = DriverManager.getConnection(JDBC_URL,JDBC_USER,JDBC_PASSWORD);
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, id); // 쿼리문의 ? 에 인자값으로 넣은 id를 넣어 찾아낸다. 
+					rs = pstmt.executeQuery(); // select 구문을 수행할때 쓰임 값을 가져오는 용도?
+					if(rs.next()) { //
+						if(rs.getString(1).contentEquals(phone)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
+							//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
+							System.out.println(rs.getString(2));
+							userPw = rs.getString(2);
+							return 1;					
+						}else {
+							System.out.println("번호 오류");
+								return 2;
+						}
+					}
+					System.out.println("아이디 오류");
+					return -1;
+				}finally {
+					rs.close();
+					pstmt.close();
+					con.close();				
+				}
+			}catch(SQLException e) {
+					e.printStackTrace();
+				}
+			return -2;	//DB오류
+			}
 	 
+		  
 }
