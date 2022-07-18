@@ -1,30 +1,217 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <% String userId = request.getParameter("userId");
-    HttpSession log = request.getSession(false);
-	String Id = (String)log.getAttribute("userId");
-	if(Id != null ) {
-		request.getRequestDispatcher("indexLogin.jsp").forward(request, response);
-		return;
-	}
-    %>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> -->
     <!DOCTYPE html>
     <html lang="ko" dir="ltr">
       <head>
         <title>Ayak</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1. minimum-scale=1 user-scalable=no">
-        <!-- bootstrap css code -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-        <link rel="stylesheet" href="./css/initial.min.css">
-        <link rel="stylesheet" href="./css/style.min.css">
-        <link rel="stylesheet" href="../css/initial.min.css">
-        <link rel="stylesheet" href="../css/style.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-        <script type="text/javascript" src="./js/jquery.min.js"></script>
-        <script type="text/javascript" src="./js/common.js"></script>
+        <link rel="stylesheet" href="./css/main.css"/>
       </head>
       <body>
+<<<<<<< HEAD
+       <!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/">Ayak</a></h1>
+						<nav class="links">
+							<ul>
+								<li>
+								<form action="pilllist.do" method="post">
+									<input type="submit" value="약 정보">
+								</form></li>
+								<li><a href="#">약국검색</a></li>
+								<li><a href="#">다이어리</a></li>
+								<li><a href="#">게시판</a></li>
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+								<li class="search">
+									<a class="fa-search" href="#search">Search</a>
+									<form id="search" method="get" action="#">
+										<input type="text" name="query" placeholder="약 검색" />
+									</form>
+								</li>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="검색"/>
+								</form>
+							</section>
+
+						<!-- Links -->
+							<section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>마이페이지</h3>
+											<p>개인정보 수정/변경</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>약 빠르게 찾기</h3>
+											<p>정확한 약 정보</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>다이어리</h3>
+											<p>정확한 알람</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>게시물</h3>
+											<p>내가 쓴 게시글</p>
+										</a>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><a href="./auth/auLogin.jsp" class="button large fit">로그인</a></li>
+								</ul>
+							</section>
+					</section>
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="single.html" style="font-size: 30px;">우리 약은 맛도 좋아요</a></h2>
+										<p>샬라샬라</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">2022 07월 15일</time>
+									</div>
+								</header>
+								<a href="single.html" class="image featured"><img src="./images/Iknow.png" alt="" /></a>
+								<p style="font-weight: bold;">약은 맛없어 먹지마세요</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="single.html" class="button large" style="font-size: 14px;">바로가기</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#" style="font-size: 15px; font-weight: bold;">좋아요</a></li>
+										<li><a href="#" class="icon solid fa-heart" style="font-size: 15px; font-weight: bold;">28</a></li>
+										<li><a href="#" class="icon solid fa-comment" style="font-size: 15px; font-weight: bold;">128</a></li>
+									</ul>
+								</footer>
+							</article>
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="single.html"style="font-size: 30px;">정확하고 빠른 약 정보 검색</a></h2>
+										<p>샬라샬라</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-10-25">2022 07월 15일</time>
+									</div>
+								</header>
+								<a href="single.html" class="image featured"><img src="./images/Iknow2.jpg" alt="" /></a>
+								<p style="font-weight: bold;">약은 맛없어 먹지마세요</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="single.html" class="button large" style="font-size: 14px;">바로가기</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#" style="font-size: 15px; font-weight: bold;">좋아요</a></li>
+										<li><a href="#" class="icon solid fa-heart" style="font-size: 15px; font-weight: bold;">28</a></li>
+										<li><a href="#" class="icon solid fa-comment"  style="font-size: 15px; font-weight: bold;">128</a></li>
+									</ul>
+								</footer>
+								<section id="footer" style="text-align: center; margin-top: 10px;">
+									<ul class="icons">
+										<li><span class="label" style="margin-left: 30px; font-size: 25px; color: #5dbde3;">Ayak</span></li>
+									</ul>
+									<p class="copyright">Copyright Ayak Corp. All Rights Reserved.</p>
+								</section>
+							</article>
+					</div>
+				<!-- Sidebar -->
+					<section id="sidebar">
+						<!-- Mini Posts -->
+							<section>
+								<div class="mini-posts">
+									<!-- Mini Post -->
+										<article class="mini-post">
+											<header>
+												<h3><a href="single.html" style="font-weight: bold; font-size: 13px;">이건 약 사진일껄?</a></h3>
+												<time class="published" datetime="2015-10-20" style=" font-weight: bold;">2022년 07월 15일</time>
+												<a href="#" class="author"><img src="images/pic01.jpg" alt="" /></a>
+											</header>
+											<a href="single.html" class="image"><img src="./images/pic04.jpg" alt="" /></a>
+										</article>
+								</div>
+							</section>
+						<!-- Posts List -->
+							<section>
+								<ul class="posts">
+									<li>
+										<article>
+											<header>
+												<h3><a href="single.html" style="font-weight: bold; font-size: 13px;">hi</a></h3>
+												<time class="published" datetime="2015-10-20" style=" font-weight: bold;">2022년 07월 15일</time>
+											</header>
+											<a href="single.html" class="image"><img src="./images/pic08.jpg" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="single.html" style="font-weight: bold; font-size: 13px;">hi</a></h3>
+												<time class="published" datetime="2015-10-15" style=" font-weight: bold;">2022년 07월 15일</time>
+											</header>
+											<a href="single.html" class="image"><img src="./images/pic09.jpg" alt="" /></a>
+										</article>
+									</li>
+									<li>
+										<article>
+											<header>
+												<h3><a href="single.html" style="font-weight: bold;">Hey Hey You Go girl</a></h3>
+												<time class="published" datetime="2015-10-10" style=" font-weight: bold;">2022년 07월 15일</time>
+											</header>
+											<a href="single.html" class="image"><img src="./images/pic10.jpg" alt="" /></a>
+										</article>
+									</li>
+								</ul>
+							</section>
+						<!-- About -->
+							<section class="blurb">
+								<h2>Pill About</h2>
+								<p>글</p>
+								<ul class="actions">
+									<li><a href="#" class="button" style="font-size: 10px;">더 많은 정보</a></li>
+								</ul>
+							</section>
+					</section>
+			</div>
+		<!-- Scripts -->
+			<script src="./js/jquery.min.js"></script>
+			<script src="./js/browser.min.js"></script>
+			<script src="./js/breakpoints.min.js"></script>
+			<script src="./js/util.js"></script>
+			<script src="./js/main.js"></script>
+			
+=======
         <div id="wrap">
           <!-- alert -->
           <div class="alert alert-primary alert-dismissible fade show" role="alert" style="color:">
@@ -111,5 +298,6 @@
             keyboard: true,
           });
         </script>
+>>>>>>> refs/remotes/origin/main
       </body>
     </html>

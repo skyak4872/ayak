@@ -167,7 +167,7 @@ public class MedicineDao {
 	}
 	
 	public List<Medicine> All_listByDrugEffect(String Effect){
-		String sql = "SELECT * FROM Medicine WHERE M_DrugEffect LIKE '%"+Effect+"%'";
+		String sql = "SELECT * FROM Medicine WHERE M_DrugEffect LIKE ?";
 		List<Medicine> medi_list = new ArrayList<Medicine>();
 		
 		try {

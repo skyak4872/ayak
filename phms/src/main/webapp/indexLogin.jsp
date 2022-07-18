@@ -1,13 +1,6 @@
     <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String userId = request.getParameter("userId");
-    HttpSession log = request.getSession(false);
-	String Id = (String)log.getAttribute("userId");
-	if(Id == null ) {
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-		return;
-	}
-    %>
+    <% String userId = request.getParameter("userId"); %>
     <!DOCTYPE html>
     <html lang="ko" dir="ltr">
       <head>
@@ -39,7 +32,7 @@
                 <ul class="navbar-nav">
                   <li class="nav-item">
                   <% String id = (String)session.getAttribute("userId"); %>
-                  <a class="nav-link" href="#"><%= id %>님</a>
+                  <%= id %>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="./auth/logout">로그아웃</a>
