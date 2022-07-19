@@ -23,7 +23,7 @@ public class FindUserPwServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8"); //post방식의 요청값 한글처리 안하면 깨진다.
 		String id = request.getParameter("userId"); //클라이언트의 요청값을 받아온다. form태그의 action과 위의 Webservlet 매핑이 맞아야한다.
-		String phone = request.getParameter("userPhone");
+		String phone = request.getParameter("userphone");
 		
 		
 		UserDao userDao = new UserDao();

@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>MemberShip Found User Pw</title>
 <link type="text/css" rel="stylesheet" href="./css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,28 +13,28 @@
 	<form action="msLogin" method="POST">
   <div class="wrap">
        <div class="login">
-           <h2>ºñ¹Ð¹øÈ£ Ã£±â</h2>
+           <h2>ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</h2>
            <div class="login_id">
-               <h4 class="findinfo">°í°´´ÔÀÇ Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â ºñ¹Ð¹øÈ£´Â ¾Æ·¡¿Í °°½À´Ï´Ù.</h4>
+               <h4 class="findinfo">ê³ ê°ë‹˜ì˜ ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ë¹„ë°€ë²ˆí˜¸ëŠ” ì•„ëž˜ì™€ ê°™ìŠµë‹ˆë‹¤.</h4>
                <%@ page import="com.ayak.phms.membership.UserDao" %>
                <% UserDao userDao = new UserDao();
        		String Id = request.getParameter("userId");
-    		String phone = request.getParameter("userPhone");
+    		String phone = request.getParameter("userphone");
     		userDao.findUserPw(Id, phone); 
                %>
                <h4 class="find"><%= userDao.getFindUserPw() %></h4>
            </div>
   			   <div class="login_etc"style="justify-content: space-between;">
                <div class="checkbox">
-                 <a href="auLogin.jsp" style="margin-left: 15px;">·Î±×ÀÎ</a>
+                 <a href="auLogin.jsp" style="margin-left: 15px;">ë¡œê·¸ì¸</a>
                </div>
                <div class="forgot_pw">
-                 <a href="auFinduserId.jsp" style="margin-right: 15px;">¾ÆÀÌµð Ã£±â</a>
+                 <a href="auFinduserId.jsp" style="margin-right: 15px;">ì•„ì´ë”” ì°¾ê¸°</a>
            </div>
            </div>
            <div class="submit">
-           <a class="submit findLogin" href="auLogin.jsp">·Î±×ÀÎ ÇÏ·¯°¡±â</a>
-           <p class="main"><a href="../index.jsp">¸ÞÀÎÆäÀÌÁö</a></p>
+           <a class="submit findLogin" href="auLogin.jsp">ë¡œê·¸ì¸ í•˜ëŸ¬ê°€ê¸°</a>
+           <p class="main"><a href="../index.jsp">ë©”ì¸íŽ˜ì´ì§€</a></p>
            </div>
        </div>
    </div>

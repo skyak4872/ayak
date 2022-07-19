@@ -6,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
-import com.ayak.phms.membership.User;
-
 public class UserDao {
 	private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String JDBC_URL = "jdbc:mysql://localhost:3306/jv250?serverTimezone=Asia/Seoul";
@@ -159,10 +155,7 @@ public class UserDao {
 			return 3;	//DB오류
 			}
 		
-//		public static void main(String[] args) {
-//			UserDao userDao = new UserDao();
-//			userDao.checkUserEmail("donoun6@naver.com");
-//		}
+
 		
 //	  =============================================== 로그인 ====================================================
 	public int login(String id, String passwd) {
@@ -244,10 +237,10 @@ public class UserDao {
 		return -2;	//DB오류
 		}
 	
-	public static void main(String[] args) {
-		UserDao userDao = new UserDao();
-		userDao.findUserId("donoun6@naver.com", "010-8396-5353");
-	}
+//	public static void main(String[] args) {
+//		UserDao userDao = new UserDao();
+//		userDao.findUserId("donoun6@naver.com", "010-8396-5353");
+//	}
 	
 //	  =============================================== 비밀번호 찾기 ====================================================
 		private String userPw;
@@ -258,8 +251,8 @@ public class UserDao {
 	  
 		public int findUserPw(String id, String phone) {
 			String sql = "SELECT userphone , userPassWd FROM User WHERE userId = ?"; //addUser 테이블의 id(입력) 데이터에 맞는 passwd를 찾는다.
-			System.out.println(id);
-			System.out.println(phone);
+			System.out.println(id + "1");
+			System.out.println(phone + "1");
 			try {
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -272,7 +265,7 @@ public class UserDao {
 					if(rs.next()) { //
 						if(rs.getString(1).contentEquals(phone)) { //Equals는 인스턴스객체도 비교하지만 contentEquals는 문자열의 값만 비교
 							//즉, String 객체를 StringBuffer / StringBuilder / Char Array 객체들과 비교 가능
-							System.out.println(rs.getString(2));
+							System.out.println(rs.getString(2) + "1");
 							userPw = rs.getString(2);
 							return 1;					
 						}else {
@@ -292,6 +285,9 @@ public class UserDao {
 				}
 			return -2;	//DB오류
 			}
-	 
+//		public static void main(String[] args) {
+//		UserDao userDao = new UserDao();
+//		userDao.findUserPw("donoun6","010-8396-5353");
+//	}
 		  
 }
