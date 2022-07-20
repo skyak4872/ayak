@@ -15,7 +15,7 @@ public class Medicine {
 	
 	
 	public Medicine() {
-		super(); 
+		super();
 	}
 	
 	public Medicine(String m_Company, String m_DrugName, String m_DrugEffect, String m_UseDrug,

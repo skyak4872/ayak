@@ -1,6 +1,6 @@
 package com.ayak.phms.store;
 
-public class store {
+public class Store {
 	private String DS_Location;
 	private String Ds_StoreTel;
 	private String Ds_OperatingHours;

@@ -3059,7 +3059,6 @@ input, select, textarea {
 			font-weight: 700;
 			padding: 0.75em 0.75em 0.75em 0.75em;
 			text-align: center;
-			width: 20%;
 		}
 
 		table thead {
@@ -3210,6 +3209,7 @@ input, select, textarea {
 					#header .main ul li > a {
 						text-decoration: none;
 						border-bottom: 0;
+						color: #5dbde7;
 						overflow: hidden;
 						position: relative;
 						text-indent: 4em;
@@ -3226,7 +3226,6 @@ input, select, textarea {
 							line-height: 1;
 							text-transform: none !important;
 							font-family: 'Font Awesome 5 Free';
-							background-image: url("./images/ms.png");
 							font-weight: 900;
 						}
 
@@ -3248,7 +3247,7 @@ input, select, textarea {
 
 			#header form input {
 				display: inline-block;
-				font-size: 14px;
+				height: 2.5em;
 				position: relative;
 				top: -2px;
 				vertical-align: middle;

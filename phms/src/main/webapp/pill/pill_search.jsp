@@ -135,6 +135,10 @@
 			<th>번호</th>
 			<td><%= i+1 %></td>
 		<tr>
+		<tr>
+			<th>제품이미지</th>
+			<td><img src='<%=medi_list.get(i).getM_DrugImage() %>' style="width:100px; height:50px;" onerror="this.style.display='none'"></td>
+			</tr>
 			<th>업체명</th>
 			<td><%=medi_list.get(i).getM_Company() %></td>
 		</tr>
@@ -170,10 +174,7 @@
 			<th>보관법</th>
 			<td><%=medi_list.get(i).getM_StorageMethod() %></td>
 			</tr>
-			<tr>
-			<th>제품이미지</th>
-			<td><img src='<%=medi_list.get(i).getM_DrugImage() %>' style="width:100px; height:50px;" onerror="this.style.display='none'"></td>
-			</tr>
+			
 		</tr>
 		<% } %>
 				</table>
